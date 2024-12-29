@@ -3,7 +3,20 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 
+const PrivateRoute = ({ isAuth, children }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  if (!isAuth) {
+    return navigate("/login", { state: { from: location }, replace: true });
+  }
+
+  return children;
+};
+
 function App() {
+  const token = localStorage.getItem("token"); 
+
   return (
     <div>
       <Routes>
