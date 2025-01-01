@@ -10,17 +10,14 @@ const PrivateRoute = ({ isAuth, children }) => {
   if (!isAuth) {
     return navigate("/login", { state: { from: location }, replace: true });
   }
-
   return children;
 };
-
 function App() {
   const token = localStorage.getItem("token"); 
-
   return (
     <div>
       <Routes>
-        <Route index element={<PrivateRoute isAuth={!!token}><Home /></PrivateRoute>} />
+        <Route path="/" element={<PrivateRoute isAuth={!!token}><Home /></PrivateRoute>} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>

@@ -47,7 +47,6 @@ function App() {
         if (response.status === 200) {
           localStorage.setItem("token", response.data.accessToken);
           localStorage.setItem("user", JSON.stringify(response.data));
-          // Set token in state
           navigate("/"); 
         }
       })
